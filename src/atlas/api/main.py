@@ -5,6 +5,7 @@ from fastapi import FastAPI
 from atlas.api.routes.health import router as health_router
 from atlas.config.settings import get_settings
 from atlas.utils.logger import configure_logger
+from atlas.api.routes.database import router as database_router
 
 logger = configure_logger()
 
@@ -24,3 +25,4 @@ app = FastAPI(
 )
 
 app.include_router(health_router)
+app.include_router(database_router)

@@ -1,0 +1,8 @@
+Update src/atlas/api/main.py
+
+Add:
+from atlas.api.routes.database import router as database_router
+
+Then after include_router(health_router):
+
+app.include_router(database_router)
