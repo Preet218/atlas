@@ -2,14 +2,15 @@
 name = "atlas"
 version = "0.1.0"
 description = "AI-powered Career Operating System"
+readme = "README.md"
 requires-python = ">=3.12"
 
 dependencies = [
     "fastapi>=0.116.0",
     "uvicorn[standard]>=0.35.0",
     "sqlalchemy>=2.0",
-    "psycopg[binary]>=3.2",
     "alembic>=1.16",
+    "psycopg[binary]>=3.2",
     "pydantic>=2.11",
     "pydantic-settings>=2.10",
     "python-dotenv>=1.1",
@@ -22,8 +23,8 @@ dependencies = [
 dev = [
     "pytest>=8.4",
     "pytest-asyncio>=1.1",
-    "ruff>=0.12",
     "black>=25.1",
+    "ruff>=0.12",
     "mypy>=1.17",
 ]
 
@@ -32,6 +33,10 @@ line-length = 100
 
 [tool.ruff]
 line-length = 100
+target-version = "py312"
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/atlas"]
