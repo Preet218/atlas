@@ -1,6 +1,8 @@
 from atlas.common.http import AtlasHttpClient
+from atlas.discovery.connectors.ashby import AshbyConnector
 from atlas.discovery.connectors.greenhouse import GreenhouseConnector
 from atlas.discovery.connectors.lever import LeverConnector
+from atlas.discovery.mappers.ashby import AshbyJobMapper
 from atlas.discovery.mappers.greenhouse import GreenhouseJobMapper
 from atlas.discovery.mappers.lever import LeverJobMapper
 from atlas.discovery.service import DiscoveryService
@@ -20,6 +22,11 @@ class Atlas:
             mapper=LeverJobMapper(),
         )
 
+        ashby = AshbyConnector(
+            client=client,
+            mapper=AshbyJobMapper(),
+        )
+
         self.discovery = DiscoveryService(
-            connectors=[greenhouse, lever],
+            connectors=[greenhouse, lever, ashby],
         )

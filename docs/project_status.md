@@ -14,12 +14,14 @@
 - Lever mapper (location, employment type, compensation)
 - Lever connector
 - Lever tests
+- Ashby mapper (location, employment type, compensation)
+- Ashby connector
+- Ashby tests
+- Fixed job.enums.JobPlatform missing ASHBY/WORKDAY members
 
 ## Upcoming
 
 Workday
-
-Ashby
 
 LinkedIn
 

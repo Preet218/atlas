@@ -31,6 +31,8 @@ class ExperienceLevel(str, Enum):
 class JobPlatform(str, Enum):
     GREENHOUSE = "greenhouse"
     LEVER = "lever"
+    WORKDAY = "workday"
+    ASHBY = "ashby"
     LINKEDIN = "linkedin"
     NAUKRI = "naukri"
     INDEED = "indeed"
