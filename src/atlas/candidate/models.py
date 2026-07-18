@@ -9,7 +9,7 @@ instead of reading raw resume files.
 
 from __future__ import annotations
 
-from datetime import date, datetime
+from datetime import date, datetime, timezone
 from typing import Optional
 
 from pydantic import BaseModel, ConfigDict, EmailStr, Field
@@ -112,11 +112,11 @@ class Metadata(AtlasBaseModel):
     atlas_version: str = "0.1.0"
 
     created_at: datetime = Field(
-        default_factory=datetime.utcnow,
+        default_factory=lambda: datetime.now(timezone.utc),
     )
 
     updated_at: datetime = Field(
-        default_factory=datetime.utcnow,
+        default_factory=lambda: datetime.now(timezone.utc),
     )
 
     status: ProfileStatus = ProfileStatus.DRAFT

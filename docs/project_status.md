@@ -18,14 +18,15 @@
 - Ashby connector
 - Ashby tests
 - Fixed job.enums.JobPlatform missing ASHBY/WORKDAY members
+- Ranking Engine (JobRanker domain service, RankingPolicy, RankingService)
+- Ranking tests
+- Fixed deprecated datetime.utcnow() in candidate.Metadata
 
 ## Upcoming
 
 Workday
 
 LinkedIn
-
-Ranking Engine
 
 Matching Engine
 
