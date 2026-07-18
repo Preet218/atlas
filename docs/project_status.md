@@ -11,22 +11,9 @@
 - Greenhouse connector
 - Greenhouse mapper
 - Greenhouse tests
-
-## In Progress
-
-Lever Connector
-
-Completed
-- Downloaded real fixture
-- Initial mapper
-- Initial mapper test
-
-Next
-- Map location
-- Map employment type
-- Map compensation
-- Build connector
-- Connector tests
+- Lever mapper (location, employment type, compensation)
+- Lever connector
+- Lever tests
 
 ## Upcoming
 
