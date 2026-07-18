@@ -54,9 +54,7 @@ class CandidateStorage:
                 )
 
         except Exception as exc:
-            raise CandidateStorageError(
-                f"Unable to save candidate profile: {exc}"
-            ) from exc
+            raise CandidateStorageError(f"Unable to save candidate profile: {exc}") from exc
 
     def load(self) -> Candidate:
         """
@@ -64,9 +62,7 @@ class CandidateStorage:
         """
 
         if not self.exists():
-            raise CandidateNotFoundError(
-                str(self.storage_path)
-            )
+            raise CandidateNotFoundError(str(self.storage_path))
 
         try:
             with self.storage_path.open(

@@ -1,0 +1,123 @@
+{
+  "absolute_url": "https://job-boards.greenhouse.io/canonical/jobs/5150422",
+  "data_compliance": [
+    {
+      "type": "gdpr",
+      "requires_consent": false,
+      "requires_processing_consent": false,
+      "requires_retention_consent": false,
+      "retention_period": null,
+      "demographic_data_consent_applies": false
+    }
+  ],
+  "education": "education_optional",
+  "internal_job_id": 2578258,
+  "location": {
+    "name": "Home based - Worldwide"
+  },
+  "metadata": [
+    {
+      "id": 186225,
+      "name": "People management responsibilities?",
+      "value": false,
+      "value_type": "yes_no"
+    },
+    {
+      "id": 149021,
+      "name": "Employment Length",
+      "value": "Permanent",
+      "value_type": "single_select"
+    },
+    {
+      "id": 675557,
+      "name": "Core skills",
+      "value": [
+        "Analysers",
+        "Contributor",
+        "Developer",
+        "Problem Solver",
+        "Technologist"
+      ],
+      "value_type": "multi_select"
+    },
+    {
+      "id": 2739136,
+      "name": "External Departments (website)",
+      "value": [
+        "Engineering"
+      ],
+      "value_type": "multi_select"
+    },
+    {
+      "id": 2739137,
+      "name": "One line job description",
+      "value": "Seeking a skilled Web Engineer proficient in JavaScript, CSS, and Flutter to design and implement innovative and user-friendly web applications.",
+      "value_type": "long_text"
+    },
+    {
+      "id": 3209541,
+      "name": "Canonical site",
+      "value": [],
+      "value_type": "multi_select"
+    },
+    {
+      "id": 3587161,
+      "name": "LinkedIn Posting Level",
+      "value": null,
+      "value_type": "single_select"
+    },
+    {
+      "id": 11961371,
+      "name": "Featured job (Talent Team to complete)",
+      "value": null,
+      "value_type": "yes_no"
+    },
+    {
+      "id": 54742858,
+      "name": "Business Unit Type",
+      "value": null,
+      "value_type": "single_select"
+    },
+    {
+      "id": 54743567,
+      "name": "Req Category",
+      "value": null,
+      "value_type": "single_select"
+    },
+    {
+      "id": 56835606,
+      "name": "Discipline/Track",
+      "value": null,
+      "value_type": "single_select"
+    }
+  ],
+  "id": 5150422,
+  "updated_at": "2026-07-16T11:10:59-04:00",
+  "requisition_id": "1089",
+  "title": "Web Frontend Engineer - JS, CSS, React, Flutter",
+  "company_name": "Canonical",
+  "first_published": "2023-10-11T13:32:38-04:00",
+  "language": "en",
+  "application_deadline": null,
+  "content": "&lt;p&gt;Canonical is a leading provider of open-source software and operating systems to the global enterprise and technology markets. Our platform, Ubuntu, is very widely used in breakthrough enterprise initiatives such as public cloud, data science, AI, engineering innovation and IoT. Our customers include the world&#39;s leading public cloud and silicon providers, and industry leaders in many sectors. The company is a pioneer of globally distributed collaboration, with 1100+ colleagues in 75+ countries and very few office-based roles. Teams meet two to four times yearly in person, in interesting locations around the world, to align on strategy and execution.&lt;/p&gt;\n&lt;p&gt;The company is founder-led, profitable and growing.&lt;/p&gt;\n&lt;p&gt;We are hiring a Web/UI Engineer to develop a data-rich and reliable user experience. These frontends are constructed using JS, CSS, React, and Flutter, and serve as Canonical\u2019s enterprise products that act as the company&#39;s face to our users.&amp;nbsp;&lt;/p&gt;\n&lt;p&gt;In order to create consistency across our products and sites, we have a central team that builds an open-source&amp;nbsp;&lt;a href=&quot;https://github.com/canonical/react-components&quot;&gt;React toolkit&lt;/a&gt; and presentation layer, the &lt;a href=&quot;https://vanillaframework.io/&quot;&gt;Vanilla Framework&lt;/a&gt;. We are excited to develop this further and see if we can help more open-source projects build performant and accessible interfaces that respond well to diverse layouts. We use REST APIs for communication, and we consider API design an important part of the process.&lt;/p&gt;\n&lt;p&gt;Flutter is a new front-end technology that has the potential to unify our desktop and web development. We are growing the team&#39;s exposure to Flutter and have roles on both web and Ubuntu engineering for this specialism.&lt;/p&gt;\n&lt;p&gt;We hire developers with outstanding academic results and a passion for open-source software, innovation, and cutting-edge web technologies. In these roles, you will have the opportunity to make significant contributions through high-quality, front-end and back-end code while exhibiting technical leadership, exceptional design, and intuitive user experience.&lt;/p&gt;\n&lt;p&gt;Additionally, we encourage colleagues to engage with the broader open-source community. We&#39;re looking for individuals who can help build a thriving community, contribute to a broad range of technologies, and ensure seamless software operations at scale.&lt;/p&gt;\n&lt;p&gt;&lt;strong&gt;Location&lt;/strong&gt;: This is a Globally remote role.&lt;/p&gt;\n&lt;h2&gt;The role entails&lt;/h2&gt;\n&lt;ul&gt;\n&lt;li&gt;Design and implement well-tested and documented software in Web technologies or Flutter.&lt;/li&gt;\n&lt;li&gt;Debug and fix issues encountered by your users&lt;/li&gt;\n&lt;li&gt;Participate in our engineering process through code and architectural reviews&lt;/li&gt;\n&lt;li&gt;Collaborate with community and colleagues on technical specifications&lt;/li&gt;\n&lt;li&gt;Contribute to technical documentation to make it the best of its kind&lt;/li&gt;\n&lt;li&gt;Seek improvements to engineering and operations practices&lt;/li&gt;\n&lt;li&gt;Deploy and operate services developed by the team&lt;/li&gt;\n&lt;li&gt;Contribute to the success of your product through technical advocacy&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h2&gt;What we are looking for in you&lt;/h2&gt;\n&lt;ul&gt;\n&lt;li&gt;An exceptional academic track record from both high school and university&lt;/li&gt;\n&lt;li&gt;Undergraduate degree in Computer Science or STEM, or a compelling narrative about your alternative path&lt;/li&gt;\n&lt;li&gt;Drive and a track record of going above and beyond expectations&lt;/li&gt;\n&lt;li&gt;Well-organised, self-starting and able to deliver to schedule&lt;/li&gt;\n&lt;li&gt;Professional manner in interacting with colleagues, partners, and community&lt;/li&gt;\n&lt;li&gt;Experience designing and writing high-quality Web technologies&lt;/li&gt;\n&lt;li&gt;Experience with and passion for Typescript, React or Flutter&lt;/li&gt;\n&lt;li&gt;An eye for accessibility and performance&lt;/li&gt;\n&lt;li&gt;Professional written and spoken English&amp;nbsp;&lt;/li&gt;\n&lt;li&gt;Experience with Linux (Debian or Ubuntu preferred)&amp;nbsp;&lt;/li&gt;\n&lt;li&gt;Excellent interpersonal skills, curiosity, flexibility, and accountability&amp;nbsp;&lt;/li&gt;\n&lt;li&gt;Passion, thoughtfulness, and self-motivation&amp;nbsp;&lt;/li&gt;\n&lt;li&gt;Excellent communication and presentation skills&amp;nbsp;&lt;/li&gt;\n&lt;li&gt;Result-oriented, with a personal drive to meet commitments&amp;nbsp;&lt;/li&gt;\n&lt;li&gt;Ability to travel twice a year, for company events for up to two weeks each&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h2&gt;Nice-to-have skills&lt;/h2&gt;\n&lt;ul&gt;\n&lt;li&gt;Experience with container tech such as LXD, Docker and Kubernetes&lt;/li&gt;\n&lt;li&gt;Attention to detail concerning user-centric UI development&lt;/li&gt;\n&lt;li&gt;REST API design, development and governance&lt;/li&gt;\n&lt;li&gt;Performance engineering and security experience&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h2&gt;What we offer colleagues&lt;/h2&gt;\n&lt;p&gt;We consider geographical location, experience, and performance in shaping compensation worldwide. We revisit compensation annually (and more often for graduates and associates) to ensure we recognise outstanding performance. In addition to base pay, we offer a performance-driven annual bonus or commission. We provide all team members with additional benefits, which reflect our values and ideals. We balance our programs to meet local needs and ensure fairness globally.&lt;/p&gt;\n&lt;ul&gt;\n&lt;li&gt;Distributed work environment with twice-yearly team sprints in person&lt;/li&gt;\n&lt;li&gt;Personal learning and development budget of USD 2,000 per year&lt;/li&gt;\n&lt;li&gt;Annual compensation review&lt;/li&gt;\n&lt;li&gt;Recognition rewards&lt;/li&gt;\n&lt;li&gt;Annual holiday leave&lt;/li&gt;\n&lt;li&gt;Maternity and paternity leave&lt;/li&gt;\n&lt;li&gt;Employee Assistance Programme&lt;/li&gt;\n&lt;li&gt;Opportunity to travel to new locations to meet colleagues&lt;/li&gt;\n&lt;li&gt;Priority Pass, and travel upgrades for long-haul company events&lt;/li&gt;\n&lt;/ul&gt;\n&lt;p&gt;For the entry level position in this advert, our compensation for US based candidates, lies between 48,000 USD to 70,000 USD. Our Early stage interview process will establish your level. If you are considered for a different level position than what is posted here, we will provide a wage scale or salary range specific to that level position.&lt;/p&gt;\n&lt;h2&gt;About Canonical&lt;/h2&gt;\n&lt;p&gt;Canonical is a pioneering tech firm at the forefront of the global move to open source. As the company that publishes Ubuntu, one of the most important open source projects and the platform for AI, IoT and the cloud, we are changing the world of software. We recruit on a global basis and set a very high standard for people joining the company. We expect excellence - in order to succeed, we need to be the best at what we do. Most colleagues at Canonical have worked from home since its inception in 2004.\u200b Working here is a step into the future, and will challenge you to think differently, work smarter, learn new skills, and raise your game.&lt;/p&gt;\n&lt;h2&gt;Canonical is an equal-opportunity employer&lt;/h2&gt;\n&lt;p&gt;We are proud to foster a workplace free from discrimination. Diversity of experience, perspectives, and background creates a better work environment and better products.&lt;a href=&quot;https://canonical.com/careers/diversity/identity&quot;&gt; Whatever your identity, we will give your application fair consideration.&lt;/a&gt;&lt;/p&gt;\n&lt;p&gt;#LI-remote&lt;/p&gt;",
+  "departments": [
+    {
+      "id": 224932,
+      "name": "Engineering Fast Track",
+      "child_ids": [],
+      "parent_id": null
+    }
+  ],
+  "offices": [
+    {
+      "id": 44282,
+      "name": "Home Based - Worldwide",
+      "location": null,
+      "child_ids": [],
+      "parent_id": 73277
+    }
+  ],
+  "ai_disclaimer": null,
+  "include_ai_disclaimer": null,
+  "ai_opt_out_request_url": null
+}

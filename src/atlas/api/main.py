@@ -9,12 +9,14 @@ from atlas.api.routes.database import router as database_router
 
 logger = configure_logger()
 
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     settings = get_settings()
     logger.info(f"Starting {settings.app_name} v{settings.app_version}")
     yield
     logger.info("Atlas shutdown complete")
+
 
 settings = get_settings()
 

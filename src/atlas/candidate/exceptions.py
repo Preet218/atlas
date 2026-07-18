@@ -24,9 +24,7 @@ class CandidateAlreadyExistsError(CandidateError):
     """Raised when attempting to create an existing profile."""
 
     def __init__(self, identifier: str):
-        super().__init__(
-            f"Candidate profile '{identifier}' already exists."
-        )
+        super().__init__(f"Candidate profile '{identifier}' already exists.")
 
 
 class CandidateValidationError(CandidateError):

@@ -67,12 +67,8 @@ class CandidateBuilder:
                     [],
                 )
             ],
-            minimum_base_salary=data["preferences"].get(
-                "minimum_base_salary"
-            ),
-            target_total_compensation=data["preferences"].get(
-                "target_total_compensation"
-            ),
+            minimum_base_salary=data["preferences"].get("minimum_base_salary"),
+            target_total_compensation=data["preferences"].get("target_total_compensation"),
             visa_requirement=VisaRequirement(
                 data["preferences"].get(
                     "visa_requirement",

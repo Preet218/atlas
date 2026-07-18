@@ -4,8 +4,10 @@ from __future__ import annotations
 
 from datetime import datetime
 from uuid import UUID
+from datetime import timezone
 
 from pydantic import BaseModel, Field, HttpUrl
+from uuid import uuid4
 
 from .enums import (
     Currency,
@@ -32,7 +34,8 @@ class Location(BaseModel):
     city: str | None = None
     state: str | None = None
     country: str | None = None
-    workplace_type: WorkplaceType
+
+    workplace_type: WorkplaceType | None = None
 
 
 class Compensation(BaseModel):
@@ -53,17 +56,17 @@ class ApplicationInfo(BaseModel):
 
 
 class JobMetadata(BaseModel):
-    """Internal metadata maintained by Atlas."""
-
     source_job_id: str
-    discovered_at: datetime
-    last_updated: datetime
+
+    discovered_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+    last_updated: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 
 class JobPosting(BaseModel):
     """Normalized representation of a job posting."""
 
-    id: UUID
+    id: UUID = Field(default_factory=uuid4)
 
     title: str
 
@@ -73,7 +76,7 @@ class JobPosting(BaseModel):
 
     compensation: Compensation | None = None
 
-    employment_type: EmploymentType
+    employment_type: EmploymentType | None = None
 
     experience_level: ExperienceLevel | None = None
 

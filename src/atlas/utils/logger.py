@@ -4,6 +4,7 @@ from loguru import logger
 
 from atlas.config.settings import get_settings
 
+
 def configure_logger():
     settings = get_settings()
 

@@ -30,6 +30,7 @@ dev = [
     "black>=25.1",
     "ruff>=0.12",
     "mypy>=1.17",
+    "pytest-mock>=3.14",
 ]
 
 [tool.black]

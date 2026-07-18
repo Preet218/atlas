@@ -4,6 +4,7 @@ from atlas.config.settings import get_settings
 
 router = APIRouter(tags=["Health"])
 
+
 @router.get("/health")
 async def health():
     settings = get_settings()

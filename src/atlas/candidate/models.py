@@ -26,6 +26,7 @@ from atlas.candidate.enums import (
     WorkMode,
 )
 
+
 class AtlasBaseModel(BaseModel):
     """
     Base model for every Atlas domain object.
@@ -120,12 +121,6 @@ class Metadata(AtlasBaseModel):
 
     status: ProfileStatus = ProfileStatus.DRAFT
 
-from atlas.candidate.enums import (
-    EducationLevel,
-    ProficiencyLevel,
-    SkillCategory,
-)
-
 
 class Education(AtlasBaseModel):
     """
@@ -157,9 +152,7 @@ class Skill(AtlasBaseModel):
 
     category: SkillCategory
 
-    proficiency: ProficiencyLevel = (
-        ProficiencyLevel.INTERMEDIATE
-    )
+    proficiency: ProficiencyLevel = ProficiencyLevel.INTERMEDIATE
 
     years_of_experience: float | None = Field(
         default=None,
@@ -222,12 +215,6 @@ class Experience(AtlasBaseModel):
 
     projects: list[Project] = Field(default_factory=list)
 
-from atlas.candidate.enums import (
-    TravelPreference,
-    VisaRequirement,
-    WorkMode,
-)
-
 
 class Preferences(AtlasBaseModel):
     """
@@ -252,13 +239,9 @@ class Preferences(AtlasBaseModel):
 
     visa_requirement: VisaRequirement = VisaRequirement.PREFERRED
 
-    travel_preference: TravelPreference = (
-        TravelPreference.NONE
-    )
+    travel_preference: TravelPreference = TravelPreference.NONE
 
-    excluded_companies: list[str] = Field(
-        default_factory=list
-    )
+    excluded_companies: list[str] = Field(default_factory=list)
 
 
 class CareerDNA(AtlasBaseModel):
@@ -296,6 +279,4 @@ class Candidate(AtlasBaseModel):
 
     career_dna: CareerDNA
 
-    metadata: Metadata = Field(
-        default_factory=Metadata
-    )
+    metadata: Metadata = Field(default_factory=Metadata)
