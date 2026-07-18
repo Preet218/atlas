@@ -6,6 +6,7 @@ from atlas.discovery.mappers.ashby import AshbyJobMapper
 from atlas.discovery.mappers.greenhouse import GreenhouseJobMapper
 from atlas.discovery.mappers.lever import LeverJobMapper
 from atlas.discovery.service import DiscoveryService
+from atlas.ranking.service import RankingService
 
 
 class Atlas:
@@ -30,3 +31,5 @@ class Atlas:
         self.discovery = DiscoveryService(
             connectors=[greenhouse, lever, ashby],
         )
+
+        self.ranking = RankingService()
