@@ -25,6 +25,16 @@
 - Matching tests
 - Added JobPosting.visa_sponsorship field (unpopulated by connectors so far)
 - Refactored: excluded-company disqualification moved from JobRanker into JobMatcher (single source of truth for hard eligibility). RankingService no longer filters; intended pipeline is discover -> MatchingService.filter_eligible -> RankingService.rank
+- Application Engine (application tracking, status lifecycle, recruiter contacts, follow-up reminders)
+- Application tests
+
+Note: Application Engine scope is deliberately narrower than spec 5.3
+"Application Intelligence" — resume selection/optimization and cover
+letter generation are out of scope for now since they depend on LLM
+and Resume-domain integration that doesn't exist yet (atlas.llm is
+still an empty scaffold). What's built covers "Applications Domain
+owns application history" from architecture.md: tracking, status
+transitions, recruiter contacts, follow-up reminders.
 
 ## Upcoming
 
@@ -32,4 +42,4 @@ Workday
 
 LinkedIn
 
-Application Engine
+Resume/cover-letter generation (blocked on atlas.llm)

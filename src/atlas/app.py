@@ -1,3 +1,4 @@
+from atlas.application.service import ApplicationService
 from atlas.common.http import AtlasHttpClient
 from atlas.discovery.connectors.ashby import AshbyConnector
 from atlas.discovery.connectors.greenhouse import GreenhouseConnector
@@ -36,3 +37,5 @@ class Atlas:
         self.matching = MatchingService()
 
         self.ranking = RankingService()
+
+        self.applications = ApplicationService()
