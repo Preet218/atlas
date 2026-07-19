@@ -33,18 +33,23 @@ def test_rank_orders_jobs_best_match_first():
     assert results[0].overall_score >= results[1].overall_score
 
 
-def test_rank_excludes_disqualified_jobs():
+def test_rank_does_not_filter_eligibility():
+    """RankingService only scores/orders; eligibility filtering is
+    MatchingService's job now (see atlas.matching). Excluded-company
+    jobs still get ranked if passed in directly.
+    """
+
     candidate = create_candidate(
         preferences=Preferences(excluded_companies=["OpenAI"]),
     )
 
-    excluded_job = create_job()  # company.name == "OpenAI"
+    job = create_job()  # company.name == "OpenAI"
 
     service = RankingService()
 
-    results = service.rank(candidate, [excluded_job], now=FIXED_NOW)
+    results = service.rank(candidate, [job], now=FIXED_NOW)
 
-    assert results == []
+    assert len(results) == 1
 
 
 def test_rank_returns_empty_list_for_no_jobs():

@@ -21,13 +21,15 @@
 - Ranking Engine (JobRanker domain service, RankingPolicy, RankingService)
 - Ranking tests
 - Fixed deprecated datetime.utcnow() in candidate.Metadata
+- Matching Engine (JobMatcher hard eligibility gate, JobDeduplicator, MatchingPolicy, MatchingService)
+- Matching tests
+- Added JobPosting.visa_sponsorship field (unpopulated by connectors so far)
+- Refactored: excluded-company disqualification moved from JobRanker into JobMatcher (single source of truth for hard eligibility). RankingService no longer filters; intended pipeline is discover -> MatchingService.filter_eligible -> RankingService.rank
 
 ## Upcoming
 
 Workday
 
 LinkedIn
-
-Matching Engine
 
 Application Engine

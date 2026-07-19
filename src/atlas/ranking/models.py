@@ -32,7 +32,14 @@ class DimensionScore(BaseModel):
 
 
 class RankedJob(BaseModel):
-    """A job posting scored against a candidate profile."""
+    """A job posting scored against a candidate profile.
+
+    RankedJob assumes the job has already passed hard eligibility
+    checks. Eligibility (excluded companies, visa, hard location and
+    compensation floors) is owned entirely by atlas.matching — see
+    JobMatcher — so it isn't duplicated here. Callers should run jobs
+    through MatchingService before ranking them.
+    """
 
     job: JobPosting
 
@@ -43,7 +50,3 @@ class RankedJob(BaseModel):
     dimension_scores: list[DimensionScore] = Field(default_factory=list)
 
     reasons: list[str] = Field(default_factory=list)
-
-    disqualified: bool = False
-
-    disqualification_reason: str | None = None

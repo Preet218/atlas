@@ -4,6 +4,7 @@ from datetime import datetime, timedelta, timezone
 
 import pytest
 
+from atlas.candidate.enums import VisaRequirement, WorkMode
 from atlas.candidate.models import Preferences
 from atlas.job.enums import Currency, ExperienceLevel, WorkplaceType
 from atlas.job.models import Compensation, JobMetadata, Location
@@ -42,7 +43,6 @@ def test_score_full_match_scores_highly_and_is_deterministic():
     # 100*.15 + experience 85*.10 + recency 100*.10 = 98.5
     assert result.overall_score == 98.5
     assert result.match_strength == MatchStrength.STRONG
-    assert not result.disqualified
     assert len(result.reasons) > 0
 
 
@@ -59,43 +59,6 @@ def test_score_is_deterministic_across_repeated_calls():
     assert [d.reason for d in first.dimension_scores] == [
         d.reason for d in second.dimension_scores
     ]
-
-
-# ---------------------------------------------------------------------------
-# Disqualification
-# ---------------------------------------------------------------------------
-
-
-def test_excluded_company_is_disqualified():
-    candidate = create_candidate(
-        preferences=Preferences(
-            excluded_companies=["OpenAI"],
-        )
-    )
-    job = create_job()  # company.name == "OpenAI"
-
-    ranker = JobRanker()
-
-    result = ranker.score(candidate, job, now=FIXED_NOW)
-
-    assert result.disqualified
-    assert result.overall_score == 0.0
-    assert result.match_strength == MatchStrength.WEAK
-    assert result.dimension_scores == []
-    assert "OpenAI" in result.disqualification_reason
-
-
-def test_excluded_company_match_is_case_insensitive():
-    candidate = create_candidate(
-        preferences=Preferences(
-            excluded_companies=["openai"],
-        )
-    )
-    job = create_job()
-
-    result = JobRanker().score(candidate, job, now=FIXED_NOW)
-
-    assert result.disqualified
 
 
 # ---------------------------------------------------------------------------

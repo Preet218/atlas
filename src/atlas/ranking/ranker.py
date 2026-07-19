@@ -63,24 +63,15 @@ class JobRanker:
     ) -> RankedJob:
         """Score a job posting against a candidate profile.
 
+        Assumes the job has already passed hard eligibility checks (see
+        atlas.matching.JobMatcher) — this method scores fit, it doesn't
+        decide eligibility.
+
         `now` may be supplied for deterministic testing of recency
         scoring; it defaults to the current UTC time.
         """
 
         now = now or datetime.now(timezone.utc)
-
-        disqualification_reason = self._disqualification_reason(candidate, job)
-
-        if disqualification_reason is not None:
-            return RankedJob(
-                job=job,
-                overall_score=0.0,
-                match_strength=MatchStrength.WEAK,
-                dimension_scores=[],
-                reasons=[],
-                disqualified=True,
-                disqualification_reason=disqualification_reason,
-            )
 
         dimension_scores = [
             self._score_skills(candidate, job),
@@ -103,22 +94,6 @@ class JobRanker:
             dimension_scores=dimension_scores,
             reasons=self._build_reasons(dimension_scores),
         )
-
-    def _disqualification_reason(
-        self,
-        candidate: Candidate,
-        job: JobPosting,
-    ) -> str | None:
-        """Return a reason string if the job must be excluded outright."""
-
-        excluded_companies = {
-            company.lower() for company in candidate.preferences.excluded_companies
-        }
-
-        if job.company.name.lower() in excluded_companies:
-            return f"{job.company.name} is on your excluded companies list."
-
-        return None
 
     def _score_skills(self, candidate: Candidate, job: JobPosting) -> DimensionScore:
         """Score how many of the job's listed skills the candidate has."""

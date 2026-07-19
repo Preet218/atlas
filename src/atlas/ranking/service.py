@@ -34,15 +34,16 @@ class RankingService:
     ) -> list[RankedJob]:
         """Rank job postings for a candidate, best match first.
 
-        Jobs that match a candidate's excluded-companies preference are
-        left out of the results entirely, since the candidate has
-        explicitly said they don't want to see them.
+        `jobs` is expected to already be filtered for hard eligibility
+        via atlas.matching.MatchingService — this method scores and
+        orders by fit, it doesn't decide who's eligible. The typical
+        pipeline is: discover -> MatchingService.filter_eligible ->
+        RankingService.rank.
         """
 
         scored = [self._ranker.score(candidate, job, now=now) for job in jobs]
 
-        eligible = [ranked for ranked in scored if not ranked.disqualified]
+        scored.sort(key=lambda ranked: ranked.overall_score, reverse=True)
 
-        eligible.sort(key=lambda ranked: ranked.overall_score, reverse=True)
+        return scored
 
-        return eligible

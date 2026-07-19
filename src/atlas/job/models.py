@@ -80,6 +80,19 @@ class JobPosting(BaseModel):
 
     experience_level: ExperienceLevel | None = None
 
+    visa_sponsorship: bool | None = Field(
+        default=None,
+        description=(
+            "Whether this role offers visa/work-authorization sponsorship. "
+            "None means unknown/unspecified — no connector currently "
+            "populates this field, since none of Greenhouse, Lever, or "
+            "Ashby's public APIs expose it. It exists so the Matching "
+            "domain has somewhere to check once a data source (job "
+            "description parsing, a future connector, or manual entry) "
+            "can populate it."
+        ),
+    )
+
     description: str
 
     requirements: list[str] = Field(default_factory=list)
