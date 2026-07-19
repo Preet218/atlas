@@ -7,17 +7,28 @@ structured input.
 
 from __future__ import annotations
 
+from datetime import date
+
 from atlas.candidate.enums import (
+    EducationLevel,
+    EmploymentType,
     NoticePeriod,
+    ProficiencyLevel,
+    SkillCategory,
     TravelPreference,
     VisaRequirement,
     WorkMode,
 )
 from atlas.candidate.models import (
+    Award,
     Candidate,
     CareerDNA,
+    Education,
+    Experience,
     PersonalInfo,
     Preferences,
+    Project,
+    Skill,
 )
 
 
@@ -108,10 +119,78 @@ class CandidateBuilder:
 
         return Candidate(
             personal=personal,
-            education=[],
-            experience=[],
-            skills=[],
-            awards=[],
+            education=[
+                self._build_education(item) for item in data.get("education", [])
+            ],
+            experience=[
+                self._build_experience(item) for item in data.get("experience", [])
+            ],
+            skills=[self._build_skill(item) for item in data.get("skills", [])],
+            awards=[self._build_award(item) for item in data.get("awards", [])],
             preferences=preferences,
             career_dna=career_dna,
         )
+
+    def _parse_date(self, value: str | None) -> date | None:
+        """Parse an ISO-8601 date string, passing None through unchanged."""
+
+        if value is None:
+            return None
+
+        return date.fromisoformat(value)
+
+    def _build_education(self, item: dict) -> Education:
+        return Education(
+            degree=EducationLevel(item["degree"]),
+            institution=item["institution"],
+            specialization=item.get("specialization"),
+            cgpa=item.get("cgpa"),
+            start_date=self._parse_date(item.get("start_date")),
+            end_date=self._parse_date(item.get("end_date")),
+        )
+
+    def _build_skill(self, item: dict) -> Skill:
+        return Skill(
+            name=item["name"],
+            category=SkillCategory(item["category"]),
+            proficiency=ProficiencyLevel(
+                item.get("proficiency", ProficiencyLevel.INTERMEDIATE.value)
+            ),
+            years_of_experience=item.get("years_of_experience"),
+        )
+
+    def _build_award(self, item: dict) -> Award:
+        return Award(
+            title=item["title"],
+            issuer=item["issuer"],
+            award_date=self._parse_date(item.get("award_date")),
+            description=item.get("description"),
+        )
+
+    def _build_project(self, item: dict) -> Project:
+        return Project(
+            name=item["name"],
+            objective=item["objective"],
+            description=item["description"],
+            technologies=item.get("technologies", []),
+            achievements=item.get("achievements", []),
+            business_metrics=item.get("business_metrics", []),
+        )
+
+    def _build_experience(self, item: dict) -> Experience:
+        return Experience(
+            company=item["company"],
+            title=item["title"],
+            employment_type=EmploymentType(
+                item.get("employment_type", EmploymentType.FULL_TIME.value)
+            ),
+            start_date=self._parse_date(item["start_date"]),
+            end_date=self._parse_date(item.get("end_date")),
+            current=item.get("current", False),
+            location=item.get("location"),
+            summary=item.get("summary"),
+            projects=[
+                self._build_project(project) for project in item.get("projects", [])
+            ],
+        )
+

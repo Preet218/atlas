@@ -27,14 +27,12 @@
 - Refactored: excluded-company disqualification moved from JobRanker into JobMatcher (single source of truth for hard eligibility). RankingService no longer filters; intended pipeline is discover -> MatchingService.filter_eligible -> RankingService.rank
 - Application Engine (application tracking, status lifecycle, recruiter contacts, follow-up reminders)
 - Application tests
-
-Note: Application Engine scope is deliberately narrower than spec 5.3
-"Application Intelligence" — resume selection/optimization and cover
-letter generation are out of scope for now since they depend on LLM
-and Resume-domain integration that doesn't exist yet (atlas.llm is
-still an empty scaffold). What's built covers "Applications Domain
-owns application history" from architecture.md: tracking, status
-transitions, recruiter contacts, follow-up reminders.
+- Fixed CandidateBuilder: was silently hardcoding education/experience/skills/awards to [] regardless of input (dead code today — CandidateService/CandidateStorage load candidate.json directly via pydantic, bypassing the builder — but a real latent bug for whenever resume-parsing starts feeding it)
+- CandidateBuilder tests (previously an empty placeholder file)
+- FindOpportunitiesWorkflow: orchestrates Discovery -> Matching -> Ranking end to end (atlas.workflows), matching the "Find Opportunities" workflow named in architecture.md. Wired into Atlas app.
+- Workflow tests
+- Added docs/user_guide.md
+- Fixed stale Makefile `run` target (pointed at a nonexistent apps.api.main:app)
 
 ## Upcoming
 
@@ -43,3 +41,5 @@ Workday
 LinkedIn
 
 Resume/cover-letter generation (blocked on atlas.llm)
+
+Currency-aware compensation comparisons in Ranking/Matching

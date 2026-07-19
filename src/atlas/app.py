@@ -9,6 +9,7 @@ from atlas.discovery.mappers.lever import LeverJobMapper
 from atlas.discovery.service import DiscoveryService
 from atlas.matching.service import MatchingService
 from atlas.ranking.service import RankingService
+from atlas.workflows.find_opportunities import FindOpportunitiesWorkflow
 
 
 class Atlas:
@@ -39,3 +40,9 @@ class Atlas:
         self.ranking = RankingService()
 
         self.applications = ApplicationService()
+
+        self.find_opportunities = FindOpportunitiesWorkflow(
+            discovery=self.discovery,
+            matching=self.matching,
+            ranking=self.ranking,
+        )
