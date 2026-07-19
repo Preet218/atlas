@@ -55,6 +55,8 @@ read.
 
 **Built and tested:**
 - Candidate profile (`atlas.candidate`)
+- Resume ingestion — upload a PDF/DOCX/text resume and have it parsed
+  into your profile automatically (`atlas.resume`, `atlas.llm`)
 - Job discovery for **Greenhouse, Lever, and Ashby** (`atlas.discovery`)
 - Matching / deduplication (`atlas.matching`)
 - Ranking (`atlas.ranking`)
@@ -64,8 +66,9 @@ read.
 
 **Not built yet:**
 - Workday and LinkedIn discovery connectors
-- Resume tailoring and cover letter generation — these depend on an
-  LLM integration (`atlas.llm`) that doesn't exist yet
+- Resume tailoring and cover letter *generation* (resume *parsing* is
+  built; generating/optimizing a resume or writing a cover letter for
+  a specific job is not)
 - A CLI or web UI — today, Atlas is used as a Python library. There's
   a FastAPI app (`atlas.api`) but it currently only exposes health
   checks, not the workflows described here
@@ -83,15 +86,48 @@ first — it may genuinely not be built yet, not a bug.
    uv sync
    ```
 2. Copy `.env.example` to `.env` and fill in `DATABASE_URL` (Postgres,
-   via `docker compose up -d` — see `APPLY.md`). `OPENAI_API_KEY` is
-   reserved for when the LLM integration lands; nothing uses it yet.
+   via `docker compose up -d` — see `APPLY.md`). Also fill in
+   `OPENAI_API_KEY` if you want to use resume upload (Step 1 below) —
+   it's not needed for anything else yet.
 3. Fill in your candidate profile — see the next section. This is the
    single most important step: every engine below is only as good as
    the data in this file.
 
 ---
 
-## Step 1: Fill in your candidate profile
+## Step 1: Build your candidate profile
+
+You have two ways to get your profile populated. Either works — use
+whichever fits.
+
+### Option A: Upload your resume (recommended)
+
+```python
+from pathlib import Path
+from atlas.app import Atlas
+
+atlas = Atlas()
+candidate = atlas.resume.ingest(Path("~/Downloads/My_Resume.pdf").expanduser())
+```
+
+This extracts the text from your PDF/DOCX/text resume, sends it to an
+LLM to pull out structured education, experience, skills, awards, and
+projects, and saves it as your profile. Re-uploading a newer resume
+later re-runs the same pipeline and **replaces** the resume-derived
+fields — but your `preferences` (excluded companies, minimum salary,
+preferred work modes, etc.) are always carried over automatically,
+since a resume never states those.
+
+This needs a real `OPENAI_API_KEY` in your `.env` — see Getting Set
+Up above. Supported formats: `.pdf`, `.docx`, `.txt`, `.md`. Scanned/
+image-only PDFs aren't supported (there's no OCR step).
+
+Because LLM extraction can occasionally miss or misjudge something,
+**check the result** — `atlas.candidate.show_profile()` prints a quick
+summary, or just inspect `src/atlas/candidate/data/candidate.json`
+directly.
+
+### Option B: Edit the JSON directly
 
 Your profile lives at `src/atlas/candidate/data/candidate.json` and
 follows the `Candidate` model (`atlas.candidate.models`). At minimum,
@@ -120,11 +156,13 @@ candidate = candidate_service.load_profile()
 ```
 
 If you're populating the profile from some other structured source
-(e.g. a parsed resume) rather than editing the JSON directly, use
-`atlas.candidate.builder.CandidateBuilder().build(data)` instead — it
-accepts a plain dict shaped like the profile (personal / education /
-experience / skills / awards / preferences / career_dna) and validates
-it into a `Candidate`.
+rather than editing the JSON directly, use
+`atlas.candidate.builder.CandidateBuilder().build(data)` — it accepts
+a plain dict shaped like the profile (personal / education /
+experience / skills / awards / projects / preferences / career_dna)
+and validates it into a `Candidate`. This is exactly what
+`atlas.resume.ResumeService` uses internally after the LLM extraction
+step.
 
 ---
 
@@ -141,6 +179,7 @@ from atlas.common.enums import JobPlatform
 from atlas.discovery.models import DiscoveryTarget
 
 atlas = Atlas()
+candidate = atlas.candidate.load_profile()
 
 targets = [
     DiscoveryTarget(platform=JobPlatform.ASHBY, identifier="openai"),
@@ -263,10 +302,21 @@ point) is allowed.
   discovered job today. Matching only hard-excludes a job on visa
   grounds when it's explicitly `False`, so this mostly means the visa
   check is a no-op in practice right now.
-- **No resume tailoring or cover letter generation yet.** You bring
-  your own resume/cover letter today; Atlas tracks which one you used
+- **No resume tailoring or cover letter generation yet.** Resume
+  *parsing* (file → profile) is built; you still bring your own
+  resume/cover letter when applying. Atlas tracks which one you used
   per application (`resume_reference`, `cover_letter`) but doesn't
   generate or optimize them.
+- **Resume parsing hasn't been run against a live API in this
+  environment.** The extraction pipeline (`atlas.resume`,
+  `atlas.llm`) was built and unit-tested with the LLM call mocked out
+  — it's never actually been executed against OpenAI's API. Treat the
+  first real upload as a test: check the resulting profile before
+  trusting it, especially dates, categorization of skills, and which
+  projects got attached to which employer.
+- **No OCR.** Scanned/image-only PDFs won't extract any text and will
+  fail with a clear error rather than silently producing an empty
+  profile.
 
 ---
 

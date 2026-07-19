@@ -39,6 +39,7 @@ def test_build_defaults_missing_lists_to_empty():
     assert candidate.experience == []
     assert candidate.skills == []
     assert candidate.awards == []
+    assert candidate.projects == []
 
 
 def test_build_parses_skills():
@@ -240,6 +241,50 @@ def test_build_parses_career_dna():
 
     assert candidate.career_dna.primary_domains == ["Data Science"]
     assert candidate.career_dna.target_domains == ["Generative AI"]
+
+
+def test_build_parses_top_level_projects():
+    data = {
+        **MINIMAL_DATA,
+        "projects": [
+            {
+                "name": "Portfolio Site",
+                "objective": "Showcase past work",
+                "description": "A personal portfolio built with React.",
+                "technologies": ["React", "TypeScript"],
+            }
+        ],
+    }
+
+    candidate = CandidateBuilder().build(data)
+
+    assert len(candidate.projects) == 1
+    assert candidate.projects[0].name == "Portfolio Site"
+    assert candidate.projects[0].technologies == ["React", "TypeScript"]
+
+
+def test_build_handles_missing_optional_personal_fields():
+    """A fresher's resume, or one that simply doesn't state nationality
+    or a personal location (both common), shouldn't fail to build.
+    """
+
+    data = {
+        "personal": {
+            "full_name": "Jamie Rivera",
+            # no location, nationality, current_company, current_role,
+            # or years_of_experience
+        },
+        "preferences": {},
+    }
+
+    candidate = CandidateBuilder().build(data)
+
+    assert candidate.personal.full_name == "Jamie Rivera"
+    assert candidate.personal.location is None
+    assert candidate.personal.nationality is None
+    assert candidate.personal.current_company is None
+    assert candidate.personal.current_role is None
+    assert candidate.personal.years_of_experience == 0.0
 
 
 def test_build_handles_real_candidate_json_shape():

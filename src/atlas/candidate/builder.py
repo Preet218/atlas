@@ -46,11 +46,11 @@ class CandidateBuilder:
             full_name=data["personal"]["full_name"],
             email=data["personal"].get("email"),
             phone=data["personal"].get("phone"),
-            location=data["personal"]["location"],
-            nationality=data["personal"]["nationality"],
-            current_company=data["personal"]["current_company"],
-            current_role=data["personal"]["current_role"],
-            years_of_experience=data["personal"]["years_of_experience"],
+            location=data["personal"].get("location"),
+            nationality=data["personal"].get("nationality"),
+            current_company=data["personal"].get("current_company"),
+            current_role=data["personal"].get("current_role"),
+            years_of_experience=data["personal"].get("years_of_experience") or 0.0,
             notice_period=NoticePeriod(
                 data["personal"].get(
                     "notice_period",
@@ -127,6 +127,7 @@ class CandidateBuilder:
             ],
             skills=[self._build_skill(item) for item in data.get("skills", [])],
             awards=[self._build_award(item) for item in data.get("awards", [])],
+            projects=[self._build_project(item) for item in data.get("projects", [])],
             preferences=preferences,
             career_dna=career_dna,
         )

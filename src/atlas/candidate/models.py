@@ -62,23 +62,23 @@ class PersonalInfo(AtlasBaseModel):
         description="Primary contact number",
     )
 
-    location: str = Field(
-        ...,
+    location: Optional[str] = Field(
+        default=None,
         description="Current city",
     )
 
-    nationality: str = Field(
-        ...,
+    nationality: Optional[str] = Field(
+        default=None,
         description="Nationality",
     )
 
-    current_company: str = Field(
-        ...,
+    current_company: Optional[str] = Field(
+        default=None,
         description="Current employer",
     )
 
-    current_role: str = Field(
-        ...,
+    current_role: Optional[str] = Field(
+        default=None,
         description="Current job title",
     )
 
@@ -274,6 +274,8 @@ class Candidate(AtlasBaseModel):
     skills: list[Skill] = Field(default_factory=list)
 
     awards: list[Award] = Field(default_factory=list)
+
+    projects: list[Project] = Field(default_factory=list)
 
     preferences: Preferences
 

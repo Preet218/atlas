@@ -1,22 +1,195 @@
 {
     "personal": {
         "full_name": "Preet Patel",
-        "email": null,
-        "phone": null,
+        "email": "preetula218@gmail.com",
+        "phone": "7096231008",
         "location": "Bangalore",
         "nationality": "Indian",
         "current_company": "American Express",
         "current_role": "Senior Data Analyst",
-        "years_of_experience": 2.0,
+        "years_of_experience": 2.1,
         "notice_period": "Negotiable",
         "linkedin_url": null,
         "github_url": null,
         "portfolio_url": null
     },
-    "education": [],
-    "experience": [],
-    "skills": [],
-    "awards": [],
+    "education": [
+        {
+            "degree": "Master",
+            "institution": "Indian Institute of Technology, Kharagpur",
+            "specialization": null,
+            "cgpa": 8.90,
+            "start_date": "2019-08-01",
+            "end_date": "2024-05-31"
+        }
+    ],
+    "experience": [
+        {
+            "company": "American Express",
+            "title": "Senior Data Analyst",
+            "employment_type": "Full Time",
+            "start_date": "2026-03-01",
+            "end_date": null,
+            "current": true,
+            "location": "Gurgaon",
+            "summary": null,
+            "projects": [
+                {
+                    "name": "Universal Modeling Automation Suite (UMAS)",
+                    "objective": "Automate the end-to-end ML pipeline from data ingestion to governance, cutting manual modelling effort while preserving model performance.",
+                    "description": "Engineered dynamic variable selection using permutation importance, PSI-based stability filtering, and redundancy pruning to identify and retain the most robust predictors across datasets. Built a model interpretability layer using SHAP TreeExplainer, partial dependence plots (PDP), and ICE curves to align model behaviour with business expectations. Automated bias and fairness checks using adverse impact analysis scoring, local heterogeneity analysis, and conditional PDP disaggregation to detect bias across protected demographic attributes. Developed a YAML-templated auto-documentation engine using Jinja2 with Git-based versioning to generate governance-compliant model cards.",
+                    "technologies": ["Python", "SHAP", "Optuna", "Jinja2", "Git"],
+                    "achievements": [
+                        "Cut manual modelling effort by 70% while preserving model performance",
+                        "Retained baseline performance in >92% of instances via champion-challenger testing"
+                    ],
+                    "business_metrics": []
+                }
+            ]
+        },
+        {
+            "company": "American Express",
+            "title": "Data Analyst",
+            "employment_type": "Full Time",
+            "start_date": "2024-06-01",
+            "end_date": "2026-02-28",
+            "current": false,
+            "location": "Gurgaon",
+            "summary": null,
+            "projects": [
+                {
+                    "name": "Governance Chatbot",
+                    "objective": "Build a production RAG-based LLM chatbot for compliance policy Q&A, deployed on-premise to reduce policy query workload.",
+                    "description": "Engineered a document ingestion pipeline covering PDF and DOCX parsing, recursive chunking at 2048 tokens with 128-token overlap, metadata tagging, and ChromaDB vector storage. Combined FAISS dense search with BM25 sparse search using reciprocal rank fusion (RRF) and MMR reranking, with embedding clustering to reduce chunk redundancy. Mitigated hallucinations using semantic similarity thresholding and context faithfulness checks, with sliding-window semantic memory for coherent multi-turn dialogue. Benchmarked using an LLM-as-a-judge framework alongside BLEU, ROUGE-L, and Precision@K metrics.",
+                    "technologies": ["LangChain", "Llama 3.1", "FAISS", "ChromaDB", "BM25"],
+                    "achievements": [
+                        "Reduced policy query workload by ~90%",
+                        "Cut retrieval latency by ~30%",
+                        "Boosted contextual accuracy by ~15%",
+                        "Achieved 75-80% factual accuracy on a held-out policy QA benchmark"
+                    ],
+                    "business_metrics": []
+                }
+            ]
+        },
+        {
+            "company": "American Express",
+            "title": "Data Analyst Intern",
+            "employment_type": "Internship",
+            "start_date": "2023-05-01",
+            "end_date": "2023-07-31",
+            "current": false,
+            "location": "Gurgaon",
+            "summary": "Video Tagging and Capsule Video Creation",
+            "projects": [
+                {
+                    "name": "Video Tagging and Capsule Video Creation",
+                    "objective": "Transcribe and summarize financial video content at scale with precise timestamps.",
+                    "description": "Built and deployed a fine-tuned Wav2Vec 2.0 ASR pipeline to transcribe financial video content with sentence-level timestamps across a large internal corpus. Fine-tuned Vicuna-7B-Instruct and LLaMA-2-7B using LoRA adapters with 4-bit QLoRA quantisation to produce structured domain-specific video summaries. Optimised prompts autonomously using Autoprompt gradient-based token search with real-time feedback.",
+                    "technologies": ["Wav2Vec 2.0", "Vicuna-7B", "LLaMA-2-7B", "LoRA", "QLoRA"],
+                    "achievements": [],
+                    "business_metrics": []
+                }
+            ]
+        },
+        {
+            "company": "Polybee",
+            "title": "Computer Vision Intern",
+            "employment_type": "Internship",
+            "start_date": "2022-04-01",
+            "end_date": "2022-07-31",
+            "current": false,
+            "location": "Bangalore",
+            "summary": "Tomato Phenotyping",
+            "projects": [
+                {
+                    "name": "Tomato Phenotyping",
+                    "objective": "Automate 3D reconstruction and tracking of tomato plants to reduce manual data collection.",
+                    "description": "Reconstructed 3D point clouds of tomato plants from RealSense D435 stereo and depth frames using Open3D ICP registration and TSDF volumetric fusion. Fine-tuned Mask R-CNN (ResNet-50 FPN, Detectron2) with random-erasing augmentation to improve occluded-instance accuracy, and integrated a SORT tracker using Lucas-Kanade optical flow for temporal plant tracking.",
+                    "technologies": ["Open3D", "Detectron2", "Mask R-CNN", "SORT"],
+                    "achievements": [
+                        "Cut manual data collection time by 20%",
+                        "Improved occluded-instance accuracy by 2%"
+                    ],
+                    "business_metrics": []
+                }
+            ]
+        }
+    ],
+    "skills": [
+        {"name": "Python", "category": "Programming", "proficiency": "Expert", "years_of_experience": 4},
+        {"name": "PyTorch", "category": "Machine Learning", "proficiency": "Advanced", "years_of_experience": 4},
+        {"name": "TensorFlow", "category": "Machine Learning", "proficiency": "Advanced", "years_of_experience": 3},
+        {"name": "Keras", "category": "Machine Learning", "proficiency": "Intermediate", "years_of_experience": 2},
+        {"name": "Detectron2", "category": "Machine Learning", "proficiency": "Advanced", "years_of_experience": 3},
+        {"name": "YOLOv8", "category": "Machine Learning", "proficiency": "Intermediate", "years_of_experience": 1.5},
+        {"name": "Wav2Vec 2.0", "category": "Machine Learning", "proficiency": "Advanced", "years_of_experience": 3},
+        {"name": "HuggingFace Transformers", "category": "Generative AI", "proficiency": "Advanced", "years_of_experience": 2},
+        {"name": "LangChain", "category": "Generative AI", "proficiency": "Advanced", "years_of_experience": 2},
+        {"name": "FAISS", "category": "Database", "proficiency": "Advanced", "years_of_experience": 2},
+        {"name": "ChromaDB", "category": "Database", "proficiency": "Advanced", "years_of_experience": 2},
+        {"name": "ONNX Runtime", "category": "Tooling", "proficiency": "Intermediate", "years_of_experience": 1.5},
+        {"name": "RAG", "category": "Generative AI", "proficiency": "Advanced", "years_of_experience": 2},
+        {"name": "Prompt Engineering", "category": "Generative AI", "proficiency": "Advanced", "years_of_experience": 2},
+        {"name": "Fine-tuning (LoRA, QLoRA)", "category": "Generative AI", "proficiency": "Advanced", "years_of_experience": 3},
+        {"name": "LLM Evaluation", "category": "Generative AI", "proficiency": "Intermediate", "years_of_experience": 2},
+        {"name": "LangSmith", "category": "Tooling", "proficiency": "Intermediate", "years_of_experience": 1.5},
+        {"name": "Vector Databases", "category": "Database", "proficiency": "Advanced", "years_of_experience": 2},
+        {"name": "Custom GPT", "category": "Generative AI", "proficiency": "Intermediate", "years_of_experience": 1.5},
+        {"name": "SHAP", "category": "Machine Learning", "proficiency": "Advanced", "years_of_experience": 1.5},
+        {"name": "Optuna", "category": "Tooling", "proficiency": "Intermediate", "years_of_experience": 1.5},
+        {"name": "Git", "category": "Tooling", "proficiency": "Advanced", "years_of_experience": 4}
+    ],
+    "awards": [
+        {
+            "title": "SVP Star Award",
+            "issuer": "American Express",
+            "award_date": "2025-12-31",
+            "description": "Q4 2025"
+        },
+        {
+            "title": "Analyst of the Quarter",
+            "issuer": "American Express",
+            "award_date": "2025-09-30",
+            "description": "Q3 2025"
+        },
+        {
+            "title": "CFR Excellence",
+            "issuer": "American Express",
+            "award_date": "2025-03-31",
+            "description": "Q1 2025"
+        },
+        {
+            "title": "Analyst of the Quarter",
+            "issuer": "American Express",
+            "award_date": "2024-12-31",
+            "description": "Q4 2024"
+        },
+        {
+            "title": "Smart India Hackathon - National Winner",
+            "issuer": "Smart India Hackathon",
+            "award_date": "2022-08-01",
+            "description": "Led a 6-member IIT Kharagpur team to victory over 6,500+ competing entries by building a Sanskrit speech recognition plugin (DeepSpeech2, WER 18.12%) trained on 78 hours of audio, deployed via a Chrome extension."
+        }
+    ],
+    "projects": [
+        {
+            "name": "Intelligent QA System",
+            "objective": "Build a semantic search and grounded question-answering system over structured reports.",
+            "description": "Built a semantic search pipeline using sentence-BERT (all-mpnet-base-v2) embeddings indexed into a FAISS IVF-PQ structure, with TF-IDF and WordNet query expansion over 10,000 structured reports. Integrated GPT-4 with dynamic context assembly to generate grounded, accurate responses.",
+            "technologies": ["sentence-BERT", "FAISS", "TF-IDF", "WordNet", "GPT-4"],
+            "achievements": ["Achieved ~87% top-5 retrieval accuracy on a 500-query evaluation set"],
+            "business_metrics": []
+        },
+        {
+            "name": "Optimisation of Socially Responsible Investment and Portfolios using Deep Learning",
+            "objective": "Optimise asset allocation balancing financial performance with ESG screening criteria.",
+            "description": "Scraped and preprocessed financial and ESG metrics for S&P 500 companies via the yfinance API, engineering features across return, risk, and sustainability dimensions. Applied CAPM, Fama-French 3-factor, and Black-Litterman models to optimise asset allocation and plotted the mean-variance efficient frontier. Trained a multivariate BiLSTM on rolling 60-day windows to project annual equity returns.",
+            "technologies": ["yfinance", "CAPM", "Fama-French", "Black-Litterman", "BiLSTM"],
+            "achievements": ["Generated an optimised portfolio balancing financial performance with ESG screening criteria"],
+            "business_metrics": []
+        }
+    ],
     "preferences": {
         "preferred_roles": [
             "AI Engineer"
@@ -36,16 +209,16 @@
         ]
     },
     "career_dna": {
-        "primary_domains": [],
-        "secondary_domains": [],
-        "strengths": [],
-        "target_domains": []
+        "primary_domains": ["Machine Learning", "Generative AI", "Data Science"],
+        "secondary_domains": ["MLOps", "Computer Vision", "Natural Language Processing"],
+        "strengths": ["ML Pipeline Automation", "Model Interpretability & Governance", "RAG Systems", "LLM Fine-tuning"],
+        "target_domains": ["AI Engineering", "Generative AI"]
     },
     "metadata": {
         "profile_version": "1.0.0",
         "atlas_version": "0.1.0",
         "created_at": "2026-07-13T21:24:02.414684",
-        "updated_at": "2026-07-13T21:24:02.415254",
+        "updated_at": "2026-07-19T00:00:00.000000",
         "status": "Draft"
     }
 }

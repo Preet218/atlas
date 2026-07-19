@@ -1,4 +1,7 @@
+from pathlib import Path
+
 from atlas.application.service import ApplicationService
+from atlas.candidate.service import CandidateService
 from atlas.common.http import AtlasHttpClient
 from atlas.discovery.connectors.ashby import AshbyConnector
 from atlas.discovery.connectors.greenhouse import GreenhouseConnector
@@ -9,7 +12,10 @@ from atlas.discovery.mappers.lever import LeverJobMapper
 from atlas.discovery.service import DiscoveryService
 from atlas.matching.service import MatchingService
 from atlas.ranking.service import RankingService
+from atlas.resume.service import ResumeService
 from atlas.workflows.find_opportunities import FindOpportunitiesWorkflow
+
+_CANDIDATE_PROFILE_PATH = Path(__file__).parent / "candidate" / "data" / "candidate.json"
 
 
 class Atlas:
@@ -46,3 +52,9 @@ class Atlas:
             matching=self.matching,
             ranking=self.ranking,
         )
+
+        self.candidate = CandidateService(
+            storage_path=_CANDIDATE_PROFILE_PATH,
+        )
+
+        self.resume = ResumeService(candidate_service=self.candidate)
